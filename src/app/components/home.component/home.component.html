@@ -1,0 +1,214 @@
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <div class="container hero-container">
+
+    <!-- Left: Text -->
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        {{ langService.t().hero.badge }}
+      </div>
+
+      <h1 class="hero-title">
+        @for (line of langService.t().hero.titleLines; track line.text; let last = $last) {
+          @if (line.accent) {
+            <span class="accent">{{ line.text }}</span>
+          } @else {
+            {{ line.text }}
+          }
+          @if (!last) { <br> }
+        }
+      </h1>
+
+      <p class="hero-subtitle">
+        {{ langService.t().hero.subtitle }}
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" routerLink="/ourservices">
+          {{ langService.t().hero.ctaPrimary }}
+        </a>
+        <a class="btn btn-outline" routerLink="/getintouch">
+          {{ langService.t().hero.ctaSecondary }}
+        </a>
+      </div>
+
+      <div class="hero-store">
+        <span class="store-label">{{ langService.t().hero.storeLabel }}</span>
+        <div class="store-badges">
+          <div class="store-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </div>
+          <div class="store-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.2L14.64 12 3.18.04c-.35-.04-.69.03-.99.2C1.6.73 1.25 1.4 1.25 2.22v19.56c0 .82.35 1.49 1.93 1.98zM17.31 8.85L5.27 2.09l9.37 9.91-7.63 8.52 10.3-6.75c.62-.4.99-1.05.99-1.77s-.37-1.37-.99-1.15z"/></svg>
+            Google Play
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: 3 Phone Mockups -->
+    <div class="hero-phones">
+
+      <!-- Phone Left -->
+      <div class="phone phone-left">
+        <div class="phone-frame">
+          <div class="phone-frame-inner"></div>
+          <div class="phone-notch">
+            <div class="phone-notch-bar"></div>
+          </div>
+          <div class="phone-screen">
+            <img [src]="'app_images/' + langService.imgFolder() + '/3.png'" alt="Send Money screen" />
+          </div>
+          <div class="phone-home-bar"></div>
+        </div>
+      </div>
+
+      <!-- Phone Center -->
+      <div class="phone phone-center">
+        <div class="phone-frame">
+          <div class="phone-frame-inner"></div>
+          <div class="phone-notch">
+            <div class="phone-notch-bar"></div>
+          </div>
+          <div class="phone-screen">
+            <img [src]="'app_images/' + langService.imgFolder() + '/1.png'" alt="Nema app welcome screen" />
+          </div>
+          <div class="phone-home-bar"></div>
+        </div>
+      </div>
+
+      <!-- Phone Right -->
+      <div class="phone phone-right">
+        <div class="phone-frame">
+          <div class="phone-frame-inner"></div>
+          <div class="phone-notch">
+            <div class="phone-notch-bar"></div>
+          </div>
+          <div class="phone-screen">
+            <img [src]="'app_images/' + langService.imgFolder() + '/2.png'" alt="Dashboard screen" />
+          </div>
+          <div class="phone-home-bar"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+   <!--
+  <div class="stats-bar">
+    <div class="container stats-inner">
+      @for (stat of langService.t().stats; track stat.label) {
+        <div class="stat-item">
+          <span class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
+      }
+    </div>
+  </div>-->
+</section>
+
+<!-- ===== COUNTRIES SLIDER (isolated — never restarts on language change) ===== -->
+<app-flags-slider [countries]="countries" />
+
+<!-- ===== FEATURES SECTION ===== -->
+<section class="features-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{{ langService.t().features.tag }}</span>
+      <h2 class="section-title">
+        {{ langService.t().features.titleLine1 }}<br>
+        <span class="accent">{{ langService.t().features.titleLine2 }}</span>
+      </h2>
+    </div>
+    <div class="features-grid">
+      @for (f of langService.t().features.items; track f.title) {
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img
+              [src]="'https://img.icons8.com/ios/96/00A86B/' + f.icon + '.png'"
+              [alt]="f.title"
+              width="52"
+              height="52"
+            />
+          </div>
+          <h3 class="feature-title">{{ f.title }}</h3>
+          <p class="feature-desc">{{ f.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="how-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{{ langService.t().how.tag }}</span>
+      <h2 class="section-title">
+        {{ langService.t().how.titleLine1 }}
+        <span class="accent">{{ langService.t().how.titleLine2 }}</span>
+      </h2>
+    </div>
+    <div class="steps-row">
+      @for (step of langService.t().how.steps; track step.num; let last = $last) {
+        <div class="step-item">
+          <div class="step-num">{{ step.num }}</div>
+          <h4 class="step-title">{{ step.title }}</h4>
+          <p class="step-desc">{{ step.desc }}</p>
+        </div>
+        @if (!last) {
+          <div class="step-arrow">{{ langService.isRTL() ? '←' : '→' }}</div>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-section">
+  <div class="container cta-inner">
+    <div class="cta-text">
+      <h2>{{ langService.t().cta.title }}</h2>
+      <p>{{ langService.t().cta.subtitle }}</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-white" routerLink="/ourservices">
+        {{ langService.t().cta.btnPrimary }}
+      </a>
+      <a class="btn btn-outline-white" routerLink="/getintouch">
+        {{ langService.t().cta.btnSecondary }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="images/nema.png" alt="Nema" class="footer-logo" />
+      <span class="footer-name">Nema International Limited</span>
+    </div>
+    <p class="footer-copy">
+      {{ langService.t().footer.copy }}
+    </p>
+    <div class="footer-links">
+      @for (link of langService.t().footer.links; track link.label) {
+        @if (link.modal) {
+          <button class="footer-modal-btn" (click)="legalModal.open(link.modal!)">{{ link.label }}</button>
+        } @else {
+          <a [routerLink]="link.path">{{ link.label }}</a>
+        }
+      }
+    </div>
+  </div>
+</footer>

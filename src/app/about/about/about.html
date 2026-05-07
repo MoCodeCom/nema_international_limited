@@ -1,0 +1,116 @@
+<!-- ===== ABOUT HERO ===== -->
+<section class="about-hero">
+
+  <!-- Slides rendered inside the hero so they're never clipped by stacking contexts -->
+  @for (img of slideshow.images; track img; let i = $index) {
+    <div
+      class="hero-slide"
+      [class.hero-slide--active]="i === slideshow.activeIndex()"
+      [style.background-image]="'url(' + img + ')'"
+    ></div>
+  }
+
+  <div class="about-hero-bg">
+    <div class="about-shape about-shape-1"></div>
+    <div class="about-shape about-shape-2"></div>
+  </div>
+  <div class="container">
+    <span class="section-tag">{{ langService.t().about.tag }}</span>
+    <h1 class="about-headline">{{ langService.t().about.headline }}</h1>
+    <p class="about-intro">{{ langService.t().about.intro }}</p>
+  </div>
+</section>
+
+<!-- ===== COMMITMENT SECTION ===== -->
+<section class="about-section commitment-section">
+  <div class="container about-two-col">
+    <div class="about-col-icon">
+      <div class="about-icon-wrap">
+        <img src="https://img.icons8.com/ios/96/00A86B/handshake.png" alt="Commitment" width="64" height="64" />
+      </div>
+    </div>
+    <div class="about-col-text">
+      <h2 class="about-section-title">{{ langService.t().about.commitmentTitle }}</h2>
+      <p class="about-section-body">{{ langService.t().about.commitmentText }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INNOVATION SECTION ===== -->
+<section class="about-section innovation-section">
+  <div class="container about-two-col about-two-col-reverse">
+    <div class="about-col-icon">
+      <div class="about-icon-wrap about-icon-wrap--dark">
+        <img src="https://img.icons8.com/ios/96/ffffff/idea.png" alt="Innovation" width="64" height="64" />
+      </div>
+    </div>
+    <div class="about-col-text">
+      <h2 class="about-section-title">{{ langService.t().about.innovationTitle }}</h2>
+      <p class="about-section-body">{{ langService.t().about.innovationText }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERTISE SECTION ===== -->
+<section class="about-section expertise-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        {{ langService.t().about.expertiseTitle }}
+      </h2>
+    </div>
+    <div class="expertise-grid">
+      @for (item of langService.t().about.expertiseItems; track item.title) {
+        <div class="expertise-card">
+          <div class="expertise-icon">
+            <img
+              [src]="'https://img.icons8.com/ios/96/00A86B/' + item.icon + '.png'"
+              [alt]="item.title"
+              width="48"
+              height="48"
+            />
+          </div>
+          <h3 class="expertise-title">{{ item.title }}</h3>
+          <p class="expertise-desc">{{ item.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLOSING BANNER ===== -->
+ <!--
+<section class="about-closing">
+  <div class="container closing-inner">
+    <p class="closing-text">{{ langService.t().about.closing }}</p>
+    <div class="closing-actions">
+      <a class="btn btn-white" routerLink="/ourservices">
+        {{ langService.t().cta.btnPrimary }}
+      </a>
+      <a class="btn btn-outline-white" routerLink="/getintouch">
+        {{ langService.t().cta.btnSecondary }}
+      </a>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="images/nema.png" alt="Nema" class="footer-logo" />
+      <span class="footer-name">Nema International Limited</span>
+    </div>
+    <p class="footer-copy">{{ langService.t().footer.copy }}</p>
+    <div class="footer-links">
+      @for (link of langService.t().footer.links; track link.label) {
+        @if (link.modal) {
+          <button class="footer-modal-btn" (click)="legalModal.open(link.modal!)">{{ link.label }}</button>
+        } @else {
+          <a [routerLink]="link.path">{{ link.label }}</a>
+        }
+      }
+    </div>
+  </div>
+</footer>

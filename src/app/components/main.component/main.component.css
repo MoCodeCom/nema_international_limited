@@ -1,0 +1,174 @@
+/* ================================================
+   NEMA NAVBAR  — matches Nema mobile app palette
+   Primary dark : #0f3460
+   Accent / cyan: #00d4ff
+   Background   : #ffffff
+   ================================================ */
+
+:host {
+  display: block;
+}
+
+/* ---------- Navbar shell ---------- */
+.nema-navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 16px rgba(15, 52, 96, 0.10);
+  border-bottom: 2px solid #e8edf5;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+}
+
+/* ---------- Brand / Logo ---------- */
+.nema-brand {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.nema-logo{
+  width: 50px;
+}
+
+.nema-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background-color: #00A86B;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 900;
+  border-radius: 9px;
+  letter-spacing: 0;
+  transition: background 0.2s;
+}
+
+.nema-brand:hover .nema-logo-badge {
+  background-color: #1eff00;
+}
+
+.nema-logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #00A86B;
+  letter-spacing: 0.07em;
+  transition: color 0.2s;
+}
+
+.nema-brand:hover .nema-logo-text {
+  color: #00ff22;
+}
+
+/* ---------- Nav links ---------- */
+.nema-nav-link {
+  font-weight: 500;
+  color: #00A86B !important;
+  padding: 8px 20px !important;
+  font-size: 0.97rem;
+  letter-spacing: 0.02em;
+  position: relative;
+  transition: color 0.25s;
+}
+
+/* Animated underline */
+.nema-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background-color: #000000;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.nema-nav-link:hover,
+.nema-nav-link.nema-active {
+  color: #000000 !important;
+
+}
+
+.nema-nav-link:hover::after,
+.nema-nav-link.nema-active::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Language switcher ---------- */
+.lang-switcher {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  padding: 5px 13px;
+  border: 1.5px solid #00A86B;
+  border-radius: 20px;
+  background: transparent;
+  color: #00A86B;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}
+
+.lang-btn:hover,
+.lang-btn.lang-active {
+  background: #00A86B;
+  color: #ffffff;
+  border-color: #00A86B;
+}
+
+/* ---------- Mobile toggler ---------- */
+.nema-toggler {
+  border-color: #00A86B;
+}
+
+.nema-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230f3460' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ---------- RTL support ---------- */
+.rtl .navbar-nav {
+  text-align: right;
+}
+
+.rtl .nema-nav-link::after {
+  transform-origin: right;
+}
+
+/* ---------- Main content area ---------- */
+.nema-main {
+  min-height: calc(100vh - 66px);
+  background-color: #ffffff;
+}
+
+/* ---------- Responsive (mobile) ---------- */
+@media (max-width: 991px) {
+  .nema-navbar .navbar-collapse {
+    padding: 12px 0 4px;
+    border-top: 1px solid #e8edf5;
+    margin-top: 10px;
+  }
+
+  .nema-nav-link::after {
+    display: none;
+  }
+
+  .lang-switcher {
+    padding-top: 12px;
+    border-top: 1px solid #e8edf5;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+}

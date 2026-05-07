@@ -1,0 +1,19 @@
+/* =====================================================
+   GLOBAL BACKGROUND SLIDESHOW
+   Fixed layer behind every page — z-index: -1
+   ===================================================== */
+.global-slide {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+  z-index: -1;
+  will-change: opacity;
+}
+
+.global-slide--active {
+  opacity: 1;
+}
